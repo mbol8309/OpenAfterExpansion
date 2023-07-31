@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\cTrader.Automate.1.0.7\build\cTrader.Automate.props" Condition="Exists('..\packages\cTrader.Automate.1.0.7\build\cTrader.Automate.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{79A8D610-7011-4EC7-A4EE-7EF0E7EC0114}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TradeController</RootNamespace>
+    <AssemblyName>TradeController</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <LangVersion>8.0</LangVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <AlgoBuild>false</AlgoBuild>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="cAlgo.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=3499da3018340880, processorArchitecture=MSIL">
+      <HintPath>..\packages\cTrader.Automate.1.0.7\lib\net40\cAlgo.API.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Operation\OperationBase.cs" />
+    <Compile Include="Operation\OperationMode.cs" />
+    <Compile Include="Operation\OperationResult.cs" />
+    <Compile Include="Operation\OperationType.cs" />
+    <Compile Include="Operation\PendingOrder.cs" />
+    <Compile Include="Operation\Position.cs" />
+    <Compile Include="Operation\QueueOperation.cs" />
+    <Compile Include="Operation\Rules\RuleExecutionIteration.cs" />
+    <Compile Include="Operation\Rules\RuleExecutionResult.cs" />
+    <Compile Include="Operation\Rules\RuleFrequency.cs" />
+    <Compile Include="Operation\Rules\Rules.cs" />
+    <Compile Include="Operation\Rules\TakeProfitRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TradeController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cTrader.Automate.1.0.7\build\cTrader.Automate.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cTrader.Automate.1.0.7\build\cTrader.Automate.props'))" />
+    <Error Condition="!Exists('..\packages\cTrader.Automate.1.0.7\build\cTrader.Automate.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cTrader.Automate.1.0.7\build\cTrader.Automate.targets'))" />
+  </Target>
+  <Import Project="..\packages\cTrader.Automate.1.0.7\build\cTrader.Automate.targets" Condition="Exists('..\packages\cTrader.Automate.1.0.7\build\cTrader.Automate.targets')" />
+</Project>
